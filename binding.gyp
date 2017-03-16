@@ -3,15 +3,11 @@
     ['OS=="win"', {
       'variables': {
         'GTK_Root%': 'C:/GTK', # Set the location of GTK all-in-one bundle
-        'with_jpeg%': 'false',
-        'with_gif%': 'false',
         'with_pango%': 'false',
         'with_freetype%': 'false'
       }
     }, { # 'OS!="win"'
       'variables': {
-        'with_jpeg%': '<!(./util/has_lib.sh jpeg)',
-        'with_gif%': '<!(./util/has_lib.sh gif)',
         'with_pango%': '<!(./util/has_lib.sh pango)',
         'with_freetype%': '<!(./util/has_lib.sh freetype)'
       }

@@ -139,13 +139,3 @@ bm('createImageData(300,300)', function(){
 bm('getImageData(0,0,100,100)', function(){
   ctx.getImageData(0,0,100,100);
 });
-
-bm('PNGStream 200x200', function(done){
-  var stream = canvas.createSyncPNGStream();
-  stream.on('data', function(chunk){
-    // whatever
-  });
-  stream.on('end', function(){
-    done();
-  });
-});

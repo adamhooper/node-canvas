@@ -1,1 +1,3 @@
-module.exports = require('./lib/canvas');
+'use strict'
+
+module.exports = require('./build/Release/canvas');

@@ -69,38 +69,6 @@ app.post('/render', function(req, res, next){
   executeTestFn(ctx, fn, done);
 });
 
-app.post('/pdf', function(req, res, next){
-  req.body = JSON.parse(req.body.json);
-  var fn = testFn(req)
-    , canvas = createCanvas(req, 'pdf')
-    , ctx = canvas.getContext('2d');
-
-  function done(){
-    res.writeHead(200, {'Content-Type' : 'application/pdf'});
-    res.write(canvas.toBuffer());
-    res.end();
-  }
-
-  executeTestFn(ctx, fn, done);
-});
-
-app.post('/jpeg', function(req, res, next){
-  // Send nothing if jpeg isn't available.
-  if (!Canvas.jpegVersion) { return res.send({}).end(); }
-  var fn = testFn(req)
-    , canvas = createCanvas(req)
-    , ctx = canvas.getContext('2d');
-
-  function done(){
-    canvas.toDataURL('image/jpeg', function (err, str){
-      if (err) throw err;
-      res.send({data: str});
-    });
-  }
-
-  executeTestFn(ctx, fn, done);
-});
-
 var port = parseInt(process.argv[2] || '4000', 10);
 app.listen(port);
 console.log('Test server listening on port %d', port);
